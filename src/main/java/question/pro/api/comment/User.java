@@ -11,7 +11,7 @@ public class User {
 		super();
 		this.id = id;
 		Date profileDate = new Date(created *1000L);
-		this.created = profileDate.getYear();
+		this.created = profileDate.getYear() + 1900;
 	}
 	private String id ;
 	private int created;
@@ -25,11 +25,8 @@ public class User {
 		return created;
 	}
 	public void setCreated(long created) {
-		System.out.println(created);
 		Date profileDate = new Date(created *1000L);
-		System.out.println("profile date part 1 ---" + profileDate);
-		System.out.println("profile date ---" + profileDate.getYear());
-		this.created = profileDate.getYear();
+		this.created = profileDate.getYear() + 1900;
 	}
 
 }

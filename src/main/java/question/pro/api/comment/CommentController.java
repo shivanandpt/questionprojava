@@ -14,7 +14,7 @@ public class CommentController {
 	RestTemplate restTemplate = new RestTemplate();
 
 	@RequestMapping("/comments")
-	public List <Comment>  getComments(@RequestParam String stotyId) {
+	public CommentResponse  getComments(@RequestParam String stotyId) {
 		Story story = restTemplate.getForObject("https://hacker-news.firebaseio.com/v0/item/"+ stotyId +".json", Story.class);
 		Integer totalComments = story.getKids().length;
 		System.out.print(story.getKids());
@@ -32,6 +32,6 @@ public class CommentController {
 		    	comnt.setProfileYears(user.getCreated());
 		    	comments.add(comnt);
 		    }
-		return comments;
+		return new CommentResponse(totalComments, comments);
 	}
 }
