@@ -37,7 +37,12 @@ public class StoryController {
 	}
 	
 	@RequestMapping("/past-stories")
-	public String pastStorie() {
-		return "Hi";
+	public List <Integer>  pastStories() {
+		
+		Integer[] stories = restTemplate.getForObject("https://hacker-news.firebaseio.com/v0/topstories.json",Integer[].class);
+	    List <Integer> pastStories = Arrays.asList(stories);
+
+	    return pastStories;
 	}
+	
 }
